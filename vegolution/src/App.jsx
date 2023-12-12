@@ -3,8 +3,8 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
-import Login from './pages/Login'
-import Register from './pages/Register'
+import Login from './pages/Auth/Login'
+import Register from './pages/Auth/Register'
 
 function App() {
   return (
