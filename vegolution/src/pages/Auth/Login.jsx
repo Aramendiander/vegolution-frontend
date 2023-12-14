@@ -21,7 +21,7 @@ const Login = () => {
         email,password
     }
     console.log(body);
-    const result = await fetch("http://localhost:3006/api/auth/login",{
+    const result = await fetch("http://localhost:3006/login",{
         method:"POST",
         credentials:"include",
         headers:{
