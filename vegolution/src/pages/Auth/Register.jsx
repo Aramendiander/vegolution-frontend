@@ -9,15 +9,15 @@ const Register = () => {
   const registerHandler = async(e)=>{
       try{
           e.preventDefault();
-          const name =  e.target.username.value;
+          const username =  e.target.username.value;
           const email =  e.target.email.value;
           const password = e.target.password.value;
-          const passwordConfirm  = e.target.passwordConfirm.value;
+          const confirmPassword  = e.target.confirmPassword.value;
           const body = {
-              name,email,password,passwordConfirm
+            username,email,password,confirmPassword
           }
           console.log(body);
-          const response = await fetch("http://localhost:3006/api/auth/register",{
+          const response = await fetch("http://localhost:3006/register",{
               method:"POST",
               credentials:"include",
               headers:{
@@ -52,8 +52,8 @@ const Register = () => {
           <input type="email" name="email" />
           <label htmlFor="password">Password</label>
           <input type="password" name="password" />
-          <label htmlFor="passwordConfirm">Confirm Password</label>
-          <input type="password" name="passwordConfirm" />
+          <label htmlFor="confirmPassword">Confirm Password</label>
+          <input type="password" name="confirmPassword" />
           <button type="submit">Register</button>
       </form>
       </section>
