@@ -5,75 +5,59 @@ import axios from 'axios'
 import Layout from '../../components/Layout'
 
 const Register = () => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [error, setError] = useState('')
-  const navigate = useNavigate()
 
+  const registerHandler = async(e)=>{
+      try{
+          e.preventDefault();
+          const name =  e.target.username.value;
+          const email =  e.target.email.value;
+          const password = e.target.password.value;
+          const passwordConfirm  = e.target.passwordConfirm.value;
+          const body = {
+              name,email,password,passwordConfirm
+          }
+          console.log(body);
+          const response = await fetch("http://localhost:3006/api/auth/register",{
+              method:"POST",
+              credentials:"include",
+              headers:{
+                  "Content-Type":"application/json"
+              },
+              body: JSON.stringify(body)
+          });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    try{
-      const reponse = await axios.post(`${process.env.REACT_APP_API}/register`,
-      { name,email,password,confirmPassword }
-    );
-      if(reponse.data.success){
-        navigate('/login')
+          if(!response.ok){
+              throw new Error(`Error ${response.status}: ${response.statusText}`);
+          }
+          const data = await response.json();
+          console.log(data);
+          if(data.error){
+              alert(data.error);
+              return;
+          }
+          alert("te has registrado");
       }
-
-    }catch (error){
-      console.log(error);
-      setError(error.response.data.error);
-    }
+      catch(error){
+          console.log(error);
+      }
   }
 
   return (
-    <Layout title="Register - Vegolution">
-        <div className="register">
-          <h1>Register Page</h1>
-          <form onSubmit={handleSubmit}>
-            <div className='mb-3'>
-              <input 
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="form-control" 
-                id="exampleInputName1"
-                placeholder="Enter Your Name" />
-            </div>
-            <div className="mb-3">
-              <input 
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="form-control" 
-                id="exampleInputEmail1"
-                placeholder="Enter Your Email" />
-            </div>
-            <div className="mb-3">
-              <input 
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="form-control" 
-                id="exampleInputPassword1"
-                placeholder="Enter Your Password" />
-            </div>
-            <div className="mb-3">
-              <input 
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className="form-control" 
-                id="exampleInputPassword1"
-                placeholder="Confirm Your Password" />
-            </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-          </form>
-        </div>
-    </Layout>
+    <Layout>
+      <section className="register">
+      <form onSubmit={registerHandler}>
+          <label htmlFor="username">Username</label>
+          <input type="text" name="username" />
+          <label htmlFor="email">Email</label>
+          <input type="email" name="email" />
+          <label htmlFor="password">Password</label>
+          <input type="password" name="password" />
+          <label htmlFor="passwordConfirm">Confirm Password</label>
+          <input type="password" name="passwordConfirm" />
+          <button type="submit">Register</button>
+      </form>
+      </section>
+    </Layout>      
   )
 }
 
