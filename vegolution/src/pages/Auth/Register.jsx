@@ -6,6 +6,8 @@ import Layout from '../../components/Layout'
 
 const Register = () => {
 
+  const navigate = useNavigate()
+
   const registerHandler = async(e)=>{
       try{
           e.preventDefault();
@@ -36,6 +38,7 @@ const Register = () => {
               return;
           }
           alert("te has registrado");
+          navigate('/login');
       }
       catch(error){
           console.log(error);
@@ -46,6 +49,7 @@ const Register = () => {
     <Layout>
       <section className="register">
       <form onSubmit={registerHandler}>
+        <h1>REGISTER</h1>
           <label htmlFor="username">Username</label>
           <input type="text" name="username" />
           <label htmlFor="email">Email</label>
