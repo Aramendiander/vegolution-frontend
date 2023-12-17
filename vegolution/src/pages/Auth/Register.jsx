@@ -48,18 +48,20 @@ const Register = () => {
   return (
     <Layout>
       <section className="register">
-      <form onSubmit={registerHandler}>
-        <h1>REGISTER</h1>
-          <label htmlFor="username">Username</label>
-          <input type="text" name="username" />
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" />
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" />
-          <label htmlFor="confirmPassword">Confirm Password</label>
-          <input type="password" name="confirmPassword" />
-          <button type="submit">Register</button>
-      </form>
+        <article className='card-form'>
+          <form onSubmit={registerHandler}>
+              <h1>REGISTER</h1>
+                <label htmlFor="username">Username</label>
+                <input type="text" name="username" />
+                <label htmlFor="email">Email</label>
+                <input type="email" name="email" />
+                <label htmlFor="password">Password</label>
+                <input type="password" name="password" />
+                <label htmlFor="confirmPassword">Confirm Password</label>
+                <input type="password" name="confirmPassword" />
+                <button type="submit">Register</button>
+          </form>
+        </article>
       </section>
     </Layout>      
   )
