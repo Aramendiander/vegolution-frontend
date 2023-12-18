@@ -6,6 +6,7 @@ import NotFound from './pages/NotFound'
 import Login from './pages/Auth/Login'
 import Register from './pages/Auth/Register'
 import ForgotPassword from './pages/Auth/ForgotPassword'
+import Cart from './pages/Cart'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/register" element={<Register />}/>
       <Route path="/forgot-password" element={<ForgotPassword />}/>
       <Route path="/contact" element={<Contact />}/>
+      <Route path="/cart" element={<Cart />}/>
       <Route path="*" element={<NotFound />}/>
     </Routes>
     </>
