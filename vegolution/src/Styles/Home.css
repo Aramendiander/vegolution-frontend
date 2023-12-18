@@ -8,7 +8,7 @@ body {
     align-items: center;
     padding: 10px;
     background-color: #fcfaed;
-    box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     max-width: 500px;
     margin: 0 auto;
@@ -20,25 +20,72 @@ body {
     border: 1px solid #ddd;
     border-radius: 4px;
     margin-right: 8px;
+    flex: 1;
   }
   
   .search-button {
     padding: 8px 16px;
-    background-color: #007bff;
+    background-color: #3a5a40;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-weight: 500;
+  }
+
+  
+  .h5 {
+    font-size: 18px;
+    margin-left: 100px;
+  }
+
+  .category-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
   }
   
-  .h1 {
+  .category-button {
+    text-decoration: none;
+    color: rgb(51, 51, 51);
+    margin: 8px;
     text-align: center;
-    justify-content: center;
+  }
+  
+  .category-button div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .category-button img {
+    width: 50px;
+    height: 50px;
+    border-radius: 30%;
+    margin-bottom: 8px;
+  }
+  
+  .category-button p {
+    margin: 0;
+  }
+
+  .category-button:hover {
+    color: rgb(185, 49, 117); 
   }
 
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-    padding: 16px;
+  }
+  
+  .grid-item {
+    text-align: center;
+  }
+  
+  .grid-item img {
+    width: 60%;
+    max-height: 150px;
+    object-fit: cover;
   }
