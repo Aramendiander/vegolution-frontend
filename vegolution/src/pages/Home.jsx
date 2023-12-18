@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Layout from '../components/Layout'
 import { Link } from 'react-router-dom';
 import "../styles/Home.css"
@@ -13,10 +13,10 @@ const CategoryButton = ({ to, imageSrc, categoryText }) => (
   </Link>
 );
 
-const ProductLink = ({ to, imageSrc, altText, description }) => (
+const ProductLink = ({ to, imageSrc, altText, name }) => (
   <Link to={to} className="grid-item">
+    <p>{name}</p>
     <img src={imageSrc} alt={altText} />
-    <p>{description}</p>
   </Link>
 );
 
@@ -28,6 +28,23 @@ const Home = () => {
     console.log('Búsqueda realizada!');
   };
 
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetchData();
+  }, []);
+  
+  const fetchData = async () => {
+    try {
+      const stockedProducts = await fetch('http://localhost:3006/');
+      const results = await stockedProducts.json()
+      setProducts(results);
+    } catch (error) {
+      console.error('Error obteniendo lista de productos', error);
+    }
+  }
+
+  
+console.log(products)
   return (
     <Layout>
       <form onSubmit={handleSearchSubmit} className="search-bar">
@@ -37,7 +54,7 @@ const Home = () => {
         </button>
       </form>
 
-      <h5>Categorías</h5>
+      {/* <h5>Categorías</h5> */}
 
       <div className="category-buttons">
       <CategoryButton to="/Alimentacion" imageSrc="./public/images/buttons/alimentacion.png" categoryText="Alimentación" />
@@ -52,11 +69,11 @@ const Home = () => {
       </div>
 
       <h5>Novedades:</h5>
-      <div className="grid-container">
+      <div className="grid-container novedades-grid-container">
 
         <div className="grid-item">
         <ProductLink
-        to="/Product"
+        to="/SingleProduct"
         imgSrc="https://www.foodnavigator.com/var/wrbm_gb_food_pharma/storage/images/media/images/150271_cerdo-chorizo-burgers-220g-rn___chilled-uk-bosh-1/15368172-1-eng-GB/150271_Cerdo-Chorizo-Burgers-220g-RN___chilled-UK-BOSH-1.png"
         altText="producto1"
         description="Short description"
@@ -88,10 +105,22 @@ const Home = () => {
         description="Short description"
         />
         </div>
-        
       </div>
-    </Layout>
-  );
-};
 
+      <h5>Nuestros productos</h5>
+        <div className="grid-container products-grid-container">
+          {products.map((product) => (
+          <ProductLink
+            key={product._id}
+            to={`/product/${product._id}`}
+            imageSrc={product.picture}
+            altText={product.name}
+            name={product.name}
+          />
+            ))}
+        </div>
+
+
+    </Layout>
+  )};
 export default Home
