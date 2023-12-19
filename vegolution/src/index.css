@@ -1,4 +1,4 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -6,7 +6,7 @@
 
 /* //navbar css */
 
-.navbar{
+.navbar {
   font-family: "Poppins", sans-serif;
   font-size: 17px;
   line-height: 26px;
@@ -37,15 +37,16 @@
   color: white;
   padding: 25px;
   background-color: #559B69 !important;
+  margin-top: 25px;
 }
 
-.footer a{
+.footer a {
   text-decoration: none;
   color: white;
   padding: 10px;
 }
 
-.footer a:hover{
+.footer a:hover {
   color: #ffefba;
   border-bottom: 1px solid #ffefba;
 }
@@ -60,16 +61,16 @@
   justify-content: center;
 }
 
-.pnf-title{
+.pnf-title {
   font-size: 100px;
   font-weight: 700;
 }
 
-.pnf-heading{
+.pnf-heading {
   font-weight: normal;
 }
 
-.pnf-btn{
+.pnf-btn {
   color: black;
   border: 1px solid black;
   text-decoration: none;
@@ -81,7 +82,8 @@
 
 .card-form {
   width: 1000px;
-  max-width: 400px; /* Ajusta el ancho según tus preferencias */
+  max-width: 400px;
+  /* Ajusta el ancho según tus preferencias */
   margin: 20px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -112,7 +114,8 @@
 .register form {
   display: flex;
   flex-direction: column;
-  border-radius: 4px solid #ccc; /* Ajusta este estilo según tus preferencias */
+  border-radius: 4px solid #ccc;
+  /* Ajusta este estilo según tus preferencias */
 }
 
 .login label,
@@ -153,4 +156,72 @@
 
 .mt-3 {
   margin-top: 5rem;
+}
+
+.cart_page {
+  background-color: lightgray;
+}
+
+.cart {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 3% 10%;  
+  -webkit-box-shadow: 0px 0px 28px 0px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 0px 28px 0px rgba(0,0,0,1);
+  box-shadow: 0px 0px 28px 0px rgba(0,0,0,1);
+}
+
+.cartitems {
+  width: 70%;
+
+  background-color:white;
+}
+
+.cartitem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.cartitem_name {
+  width: 30%;
+}
+
+.cartitem:first-child {
+  margin-top: 2rem;
+}
+
+.cartitem *:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.cartitem img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.cartitems, .checkout {
+  padding: 3rem;
+} 
+
+.checkout {
+  width: 30%;
+  padding: 5% 5%;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff94;
+}
+
+.cart_history img {
+  width: 100px;
+  height: 100px;
+}
+
+.singlehistory {
+  display:flex;
+  flex-direction: row;
 }
