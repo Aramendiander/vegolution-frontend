@@ -1,6 +1,6 @@
 
 .single-product-container {
-  background-color: #bec7b4;
+  background-color: #fcfaed;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
@@ -53,14 +53,13 @@
   padding: 8px 16px;
   background-color: #10381b;
   color: #fff; 
-  border: 1px solid #559b69; 
+  border: 1px solid #000000;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
 }
 
 .add-to-cart-button:hover {
-  background-color: #fff;
   border: 1px solid #000000;
-  color: #000;
+  color: #fff;
 }

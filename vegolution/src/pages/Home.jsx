@@ -69,46 +69,51 @@ console.log(products)
       <CategoryButton to="/Ofertas" imageSrc="./public/images/buttons/ofertas.png" categoryText="Ofertas" />
       </div>
 
-      <h5>Novedades:</h5>
+      <h5>Descubre nuestras novedades:</h5>
       <div className="grid-container novedades-grid-container">
 
+      <div className="grid-item">
+        <Link to="/product/Producto1">
+          <img
+            src="https://images.ctfassets.net/uexfe9h31g3m/2vP66kV9AoqwuI4AGUuAWI/502d349f1e96229d0ea05c9e2b6f2f35/VSH.png?w=300&h=300&fm=webp&fit=thumb&q=100"
+            alt="producto1"
+            style={{ width: '300px', height: '500px' }}
+          />
+        </Link>
+      </div>
+
         <div className="grid-item">
-        <ProductLink
-        to="/SingleProduct"
-        imgSrc="https://www.foodnavigator.com/var/wrbm_gb_food_pharma/storage/images/media/images/150271_cerdo-chorizo-burgers-220g-rn___chilled-uk-bosh-1/15368172-1-eng-GB/150271_Cerdo-Chorizo-Burgers-220g-RN___chilled-UK-BOSH-1.png"
-        altText="producto1"
-        description="Short description"
-        /> 
+        <Link to="/Product/Producto2">
+        <img
+        src="https://www.vegansisters.org/wp-content/uploads/2020/12/Richmond-Bacon-768x768.jpeg" 
+        alt="producto2"
+        style={{ width: '300px', height: '500px' }}
+        />
+        </Link>
         </div>
 
         <div className="grid-item">
-        <ProductLink
-        to="/Product"
-        imgSrc="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY854EEPTd46tD73QLNJAV7KZLq1SIqe2jIVHPbKyOwYnhjUpWv1RtiaGNSUUWsI-NKqE&usqp=CAU" 
-        altText="producto2"
-        description="Short description"
+        <Link to="/Product/Producto3">
+        <img
+        src="https://www.velivery.com/media/image/cf/fc/ea/A007490_600x600.png" 
+        alt="producto3"
+        style={{ width: '300px', height: '500px' }}
         />
+        </Link>
         </div>
 
         <div className="grid-item">
-        <ProductLink
-        to="/Product"
-        imgSrc="https://d3gr7hv60ouvr1.cloudfront.net/CACHE/images/products/d23dd42a532a4348a589dbc823b4090b/d728cda87d0d0f35199980ead9511cac.jpg" altText="producto3"
-        description="Short description"
+        <Link to="/Product/Producto4">
+        <img
+        src="https://images.kglobalservices.com/www.morningstarfarms.com/en_us/product/product_9215065/prod_img-10029097_chikn_tenders_sm.png" 
+        alt="producto4"
+        style={{ width: '300px', height: '500px' }}
         />
-        </div>
-
-        <div className="grid-item">
-        <ProductLink
-        to="/Product"
-        imgSrc="https://apiumplanet.com/wp-content/uploads/2023/04/22046-800x560.jpg" 
-        altText="producto4"
-        description="Short description"
-        />
+        </Link>      
         </div>
       </div>
 
-      <h5>Nuestros productos</h5>
+      <h5>Lo que no nos puede faltar: </h5>
         <div className="grid-container products-grid-container">
           {products.map((product) => (
           <ProductLink
