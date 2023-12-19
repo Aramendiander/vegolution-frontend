@@ -57,6 +57,7 @@ const SingleProduct = () => {
         throw new Error('Error adding product to cart');
       }
 
+      alert('Producto añadido al carrito');
 
     }
     catch(e){
