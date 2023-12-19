@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Layout from '../components/Layout'
 import { Link } from 'react-router-dom';
-import "../styles/Home.css"
+import "../styles/Home.css";
 
 
 const CategoryButton = ({ to, imageSrc, categoryText }) => (
@@ -13,8 +13,8 @@ const CategoryButton = ({ to, imageSrc, categoryText }) => (
   </Link>
 );
 
-const ProductLink = ({ to, imageSrc, altText, name }) => (
-  <Link to={to} className="grid-item">
+const ProductLink = ({ to, imageSrc, altText, name, productData }) => (
+  <Link to={{ pathname: to, state: { productData } }} className="grid-item">
     <p>{name}</p>
     <img src={imageSrc} alt={altText} />
   </Link>
@@ -112,10 +112,12 @@ console.log(products)
           {products.map((product) => (
           <ProductLink
             key={product._id}
-            to={`/product/${product._id}`}
-            imageSrc={product.picture}
+            to={`/product/${encodeURIComponent(product.name)}`}
+            state={{from: product.name}}
+            imgSrc={product.picture}
             altText={product.name}
             name={product.name}
+            imageSrc={product.picture}
           />
             ))}
         </div>
