@@ -5,6 +5,7 @@ import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 import Login from './pages/Auth/Login'
 import Register from './pages/Auth/Register'
+import SingleProduct from './pages/SingleProduct'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/register" element={<Register />}/>
       <Route path="/contact" element={<Contact />}/>
       <Route path="*" element={<NotFound />}/>
+      <Route path="/product/:name" element={<SingleProduct />}/>
     </Routes>
     </>
   )
