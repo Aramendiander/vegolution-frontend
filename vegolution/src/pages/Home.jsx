@@ -22,13 +22,10 @@ const ProductLink = ({ to, imageSrc, altText, name, productData }) => (
 
 const Home = () => {
 
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
-    //aquí el redireccionado
-    console.log('Búsqueda realizada!');
-  };
-
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
   const [products, setProducts] = useState([]);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -43,12 +40,29 @@ const Home = () => {
     }
   }
 
-  
-console.log(products)
+  const handleSearchSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch(`http://localhost:3006/search?term=${encodeURIComponent(searchTerm)}`);
+      const results = await response.json();
+      setSearchResults(results);
+    } catch (error) {
+      console.error('Error en la búsqueda', error);
+      setSearchResults([]);
+    }
+  };
+
   return (
     <Layout>
       <form onSubmit={handleSearchSubmit} className="search-bar">
-        <input className="search-input" type="text" placeholder="Busca un producto" />
+        <input
+          name="searchInput"
+          className='search-input'
+          type="text"
+          placeholder="Busca un producto"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
         <button type="submit" className="search-button">
           Buscar
         </button>
@@ -113,21 +127,35 @@ console.log(products)
       </div>
 
       <h5>Lo que no nos puede faltar: </h5>
-        <div className="grid-container products-grid-container">
-          {products.map((product) => (
+      <div className="grid-container products-grid-container">
+        {products.map((product) => (
           <ProductLink
             key={product._id}
             to={`/product/${encodeURIComponent(product.name)}`}
-            state={{from: product.name}}
+            state={{ from: product.name }}
             imgSrc={product.picture}
             altText={product.name}
             name={product.name}
             imageSrc={product.picture}
           />
-            ))}
-        </div>
+        ))}
+        
+        {/* Mostrar resultados de búsqueda si los hay */}
+        {searchResults.length > 0 && searchResults.map((result) => (
+          <ProductLink
+            key={result._id}
+            to={`/product/${encodeURIComponent(result.name)}`}
+            state={{ from: result.name }}
+            imgSrc={result.picture}
+            altText={result.name}
+            name={result.name}
+            imageSrc={result.picture}
+          />
+        ))}
+      </div>
 
 
     </Layout>
-  )};
+  );
+};
 export default Home
