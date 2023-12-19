@@ -11,9 +11,9 @@ const Contact = () => {
             <img src="/images/contacts.jpeg" alt="contacts" style={{ width: "100%" }} />
           </div>
           <div className='col-md-4'>
-            <h1 className='bg-dark p-2 text-white text-center'>CONTACTANOS</h1>
+            <h1 className='bg-dark p-2 text-white text-center'>CONTÁCTENOS</h1>
             <p className='text-justify mt-2'>
-              cualquier consulta e iformación sobre el producto no dude en contactarnos, estaremos encantados de atenderle.
+              Cualquier consulta e información sobre nuestros productos, no dude en ponerse en contacto con nosotros, estaremos encantados de atenderle.
             </p>
             <p className='mt-3'>
               <BiMailSend /> : help@vegolution.com
