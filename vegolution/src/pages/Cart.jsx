@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from 'react'
-import { Navigate, Link } from 'react-router-dom'
+import { Navigate, Link, useNavigate } from 'react-router-dom'
 import Layout from '../components/Layout'
 
 const Cart = () => {
@@ -9,6 +9,7 @@ const Cart = () => {
     const [loading, setLoading] = useState(true)
     const [totalPrice, setTotalPrice] = useState(0)
 
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchCart()
@@ -22,12 +23,7 @@ const Cart = () => {
         try {
             const response = await fetch(`http://localhost:3006/cart/`, { credentials: 'include' });
             if (response.status === 401) {
-                try {
-                    return window.location.href = "/login";
-                }
-                catch (e) {
-                    console.log(e)
-                }
+                    navigate('/login');
             }
 
             if (response.status === 404) {
