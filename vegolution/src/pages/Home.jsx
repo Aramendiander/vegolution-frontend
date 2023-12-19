@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Layout from '../components/Layout'
 import { Link } from 'react-router-dom';
-import "../styles/Home.css";
+import "../Styles/Home.css";
 
 
 const CategoryButton = ({ to, imageSrc, categoryText }) => (
@@ -45,7 +45,6 @@ const Home = () => {
 
   
 console.log(products)
-  const [auth, setAuth] = useAuth();
   return (
     <Layout>
       <form onSubmit={handleSearchSubmit} className="search-bar">
@@ -129,7 +128,6 @@ console.log(products)
         </div>
 
 
-        <pre>{JSON.stringify(auth, null, 4)}</pre>
     </Layout>
   )};
 export default Home
