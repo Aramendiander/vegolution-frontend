@@ -9,6 +9,7 @@ import ForgotPassword from './pages/Auth/ForgotPassword'
 import Cart from './pages/Cart'
 import CartHistory from './pages/CartHistory'
 import SingleProduct from './pages/SingleProduct'
+import Category from './pages/Category'
 
 function App() {
   return (
@@ -24,6 +25,11 @@ function App() {
       <Route path="/cart/history" element={<CartHistory />}/>
       <Route path="*" element={<NotFound />}/>
       <Route path="/product/:name" element={<SingleProduct />}/>
+      <Route path="/alimentacion" element={<Category />}/>
+      <Route path="/frescos" element={<Category />}/>
+      <Route path="/bebidas" element={<Category />}/>
+      <Route path="/preparados" element={<Category />}/>
+      <Route path="/ofertas" element={<Category />}/>
     </Routes>
     </>
   )
