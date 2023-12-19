@@ -17,10 +17,10 @@ const Header = () => {
           <NavLink to="/" className="nav-link">Home</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/register" className="nav-link" href="#">Register</NavLink>
+          <NavLink to="/login" className="nav-link" href="#">Login</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/login" className="nav-link" href="#">Login</NavLink>
+          <NavLink to="/cart" className="nav-link" href="#">Cart</NavLink>
         </li>
       </ul>
     </div>

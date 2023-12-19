@@ -45,6 +45,7 @@ const Home = () => {
 
   
 console.log(products)
+  const [auth, setAuth] = useAuth();
   return (
     <Layout>
       <form onSubmit={handleSearchSubmit} className="search-bar">
@@ -123,6 +124,7 @@ console.log(products)
         </div>
 
 
+        <pre>{JSON.stringify(auth, null, 4)}</pre>
     </Layout>
   )};
 export default Home

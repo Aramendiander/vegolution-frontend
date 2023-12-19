@@ -5,75 +5,65 @@ import axios from 'axios'
 import Layout from '../../components/Layout'
 
 const Register = () => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [error, setError] = useState('')
+
   const navigate = useNavigate()
 
+  const registerHandler = async(e)=>{
+      try{
+          e.preventDefault();
+          const username =  e.target.username.value;
+          const email =  e.target.email.value;
+          const password = e.target.password.value;
+          const confirmPassword  = e.target.confirmPassword.value;
+          const body = {
+            username,email,password,confirmPassword
+          }
+          console.log(body);
+          const response = await fetch("http://localhost:3006/register",{
+              method:"POST",
+              credentials:"include",
+              headers:{
+                  "Content-Type":"application/json"
+              },
+              body: JSON.stringify(body)
+          });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    try{
-      const reponse = await axios.post(`${process.env.REACT_APP_API}/register`,
-      { name,email,password,confirmPassword }
-    );
-      if(reponse.data.success){
-        navigate('/login')
+          if(!response.ok){
+              throw new Error(`Error ${response.status}: ${response.statusText}`);
+          }
+          const data = await response.json();
+          console.log(data);
+          if(data.error){
+              alert(data.error);
+              return;
+          }
+          alert("te has registrado");
+          navigate('/login');
       }
-
-    }catch (error){
-      console.log(error);
-      setError(error.response.data.error);
-    }
+      catch(error){
+          console.log(error);
+      }
   }
 
   return (
-    <Layout title="Register - Vegolution">
-        <div className="register">
-          <h1>Register Page</h1>
-          <form onSubmit={handleSubmit}>
-            <div className='mb-3'>
-              <input 
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="form-control" 
-                id="exampleInputName1"
-                placeholder="Enter Your Name" />
-            </div>
-            <div className="mb-3">
-              <input 
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="form-control" 
-                id="exampleInputEmail1"
-                placeholder="Enter Your Email" />
-            </div>
-            <div className="mb-3">
-              <input 
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="form-control" 
-                id="exampleInputPassword1"
-                placeholder="Enter Your Password" />
-            </div>
-            <div className="mb-3">
-              <input 
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className="form-control" 
-                id="exampleInputPassword1"
-                placeholder="Confirm Your Password" />
-            </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+    <Layout>
+      <section className="register">
+        <article className='card-form'>
+          <form onSubmit={registerHandler}>
+              <h1>REGISTER</h1>
+                <label htmlFor="username">Username</label>
+                <input type="text" name="username" />
+                <label htmlFor="email">Email</label>
+                <input type="email" name="email" />
+                <label htmlFor="password">Password</label>
+                <input type="password" name="password" />
+                <label htmlFor="confirmPassword">Confirm Password</label>
+                <input type="password" name="confirmPassword" />
+                <button type="submit">Register</button>
           </form>
-        </div>
-    </Layout>
+        </article>
+      </section>
+    </Layout>      
   )
 }
 
