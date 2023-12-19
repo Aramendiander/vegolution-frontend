@@ -19,7 +19,6 @@ const Login = () => {
       password,
       reset,
     };
-    console.log(body);
     try {
       const result = await fetch('http://localhost:3006/login', {
         method: 'POST',

@@ -33,7 +33,6 @@ const Cart = () => {
 
             const data = await response.json();
             setCart(data.userCart)
-            console.log(data.userCart)
             let priceCalc = 0
             data.userCart.map((item) => {
                 let itemPrice = item.product.price * item.quantity

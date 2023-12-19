@@ -15,8 +15,8 @@ const CategoryButton = ({ to, imageSrc, categoryText }) => (
 
 const ProductLink = ({ to, imageSrc, altText, name, productData }) => (
   <Link to={{ pathname: to, state: { productData } }} className="grid-item">
-    <p>{name}</p>
     <img src={imageSrc} alt={altText} />
+    <p>{name}</p>
   </Link>
 );
 
@@ -44,7 +44,6 @@ const Home = () => {
   }
 
   
-console.log(products)
   return (
     <Layout>
       <form onSubmit={handleSearchSubmit} className="search-bar">

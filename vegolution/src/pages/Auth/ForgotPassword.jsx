@@ -29,7 +29,6 @@ const ForgotPassword = () => {
       return;
     }
     const data = await result.json();
-    console.log(data);
 
     if(data.error){
         alert(data.error);

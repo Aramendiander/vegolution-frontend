@@ -54,7 +54,6 @@ const CartHistory = () => {
 
 
 
-    console.log(activeComponent)
 
 
 
@@ -73,7 +72,6 @@ const CartHistory = () => {
                                     <>
                                         {item.products.map((item, index) => {
                                             const product = item.product
-                                            console.log(item)
                                             return (
                                                 <div className='singlehistory' key={index}>
                                                     <img src={product.picture} alt={product.name} key={product.picture} />

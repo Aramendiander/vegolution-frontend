@@ -18,7 +18,6 @@ const Register = () => {
           const body = {
             username,email,password,confirmPassword
           }
-          console.log(body);
           const response = await fetch("http://localhost:3006/register",{
               method:"POST",
               credentials:"include",
@@ -32,7 +31,6 @@ const Register = () => {
               throw new Error(`Error ${response.status}: ${response.statusText}`);
           }
           const data = await response.json();
-          console.log(data);
           if(data.error){
               alert(data.error);
               return;
