@@ -75,9 +75,11 @@ const CartHistory = () => {
                                             return (
                                                 <div className='singlehistory' key={index}>
                                                     <img src={product.picture} alt={product.name} key={product.picture} />
-                                                    <p key={product.name}>{product.name}</p>
-                                                    <p key={product.price}>{product.price}€</p>
-                                                    <p key={item.quantity}>{item.quantity}</p>
+                                                    <div>
+                                                        <p key={product.name}>{product.name}</p>
+                                                        <p key={product.price}>{product.price}€</p>
+                                                        <p key={item.quantity}>{item.quantity}</p>
+                                                    </div>
                                                 </div>
                                             )
                                         })}

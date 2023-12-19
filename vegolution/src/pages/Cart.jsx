@@ -81,6 +81,7 @@ const Cart = () => {
             if (!response.ok) {
                 throw new Error('Error purchasing cart');
             }
+            alert('Purchase completed');
             fetchCart();
         } catch (error) {
             console.error('Error:', error);
