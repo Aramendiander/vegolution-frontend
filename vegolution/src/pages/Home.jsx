@@ -112,7 +112,7 @@ console.log(products)
         </div>
       </div>
 
-      <h5>Nuestros productos: </h5>
+      <h5>Lo que no nos puede faltar: </h5>
         <div className="grid-container products-grid-container">
           {products.map((product) => (
           <ProductLink
